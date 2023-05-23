@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin Dashboard</title>
+  </head>
+  <body>
+    <h1>Admin Dashboard</h1>
+    <h2>Add Vaccination Centre</h2>
+    <form method="POST" action="/admin/centres">
+      <input type="text" name="name" placeholder="Name" required />
+      <input type="text" name="workingHours" placeholder="Working Hours" required />
+      <input type="number" name="slotsAvailable" placeholder="Slots Available" required />
+      <button type="submit">Add Centre</button>
+    </form>
+    <h2>Dosage Details</h2>
+    <form method="GET" action="/admin/dosage">
+      <button type="submit">Get Dosage Details</button>
+    </form>
+    <h2>Vaccination Centres</h2>
+    <ul>
+      <% centres.forEach(centre => { %>
+        <li>
+          <strong><%= centre.name %></strong><br />
+          Working Hours: <%= centre.workingHours %><br />
+          Slots Available: <%= centre.slotsAvailable %><br />
+          <form method="POST" action="/admin/remove-centre">
+            <input type="hidden" name="centreId" value="<%= centre._id %>" />
+            <button type="submit">Remove Centre</button>
+          </form>
+        </li>
+      <% }) %>
+    </ul>
+    <a href="/admin/logout">Logout</a>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Search Results</title>
+</head>
+<body>
+  <h1>Search Results</h1>
+
+  <% if (centres.length === 0) { %>
+    <p>No results found.</p>
+  <% } else { %>
+    <ul>
+      <% centres.forEach(function(centre) { %>
+        <li>
+          <strong>Vaccination Centre:</strong> <%= centre.name %><br>
+          <strong>Working Hours:</strong> <%= centre.workingHours %>
+        </li>
+      <% }); %>
+    </ul>
+  <% } %>
+</body>
+</html>
